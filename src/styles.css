@@ -86,3 +86,14 @@ h1,h2{font-weight:600}
 .tag,.pill{border-radius:6px;background:#0f1622}
 .nav strong{font-size:.95rem;text-transform:uppercase;letter-spacing:.08em;color:#c7d2e0}
 .hero p,.small{color:#93a1b4}
+
+.timeline-wrap{grid-column:1 / -1}
+.timeline{position:relative;margin-top:10px;padding-left:14px}
+.timeline::before{content:"";position:absolute;left:6px;top:2px;bottom:2px;width:2px;background:#243041}
+.timeline-item{position:relative;padding-left:20px;margin:0 0 14px}
+.timeline-item:last-child{margin-bottom:4px}
+.timeline-dot{position:absolute;left:0;top:4px;width:12px;height:12px;border-radius:999px;border:2px solid #314158;background:#0f141b}
+.timeline-date{font-size:.82rem;color:#7f90a6;margin:0 0 2px}
+.timeline-content h3{margin:.1rem 0 .4rem;font-size:.98rem;color:#dbe4ef}
+.timeline-content p{margin:.2rem 0}
+.timeline-links a{text-decoration:none;border-bottom:1px dotted #4c6286}

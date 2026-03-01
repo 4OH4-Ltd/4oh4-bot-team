@@ -2,6 +2,7 @@ export default function Nav() {
   const links = [
     ['Priorities', '#priorities'],
     ['Workflow', '#workflow'],
+    ['Timeline', '#timeline'],
     ['About', '#about'],
     ['Status', '#status']
   ]

@@ -1,5 +1,6 @@
 import Card from './components/Card'
 import Nav from './components/Nav'
+import Timeline from './components/Timeline'
 
 const priorities = [
   { id: 6, text: 'Sticky nav + anchors' },
@@ -35,6 +36,13 @@ export default function App() {
               <li>Explicit handoff via reassignment.</li>
               <li>15-minute timeout allows takeover.</li>
             </ul>
+          </Card>
+        </div>
+
+        <div id="timeline" className="timeline-wrap">
+          <Card title="Team Timeline (Daily Log)">
+            <p>This is our running delivery timeline. We’ll append to this every day.</p>
+            <Timeline />
           </Card>
         </div>
 
