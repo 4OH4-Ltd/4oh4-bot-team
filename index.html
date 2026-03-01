@@ -5,77 +5,95 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>4OH4 Bot Team — OC1 + OC2</title>
   <style>
-    :root{--bg:#0b1020;--card:#121a33;--text:#e8ecff;--muted:#a9b3d9;--a:#7dd3fc;--b:#a78bfa}
-    *{box-sizing:border-box} body{margin:0;font-family:Inter,Segoe UI,Roboto,system-ui,sans-serif;background:radial-gradient(1200px 700px at 20% -10%,#1d2a56 0%,var(--bg) 45%);color:var(--text)}
-    .wrap{max-width:880px;margin:0 auto;padding:48px 20px}
+    :root{--bg:#0b1020;--card:#121a33;--text:#e8ecff;--muted:#a9b3d9;--a:#7dd3fc;--b:#a78bfa;--ok:#86efac}
+    *{box-sizing:border-box}
+    body{margin:0;font-family:Inter,Segoe UI,Roboto,system-ui,sans-serif;background:radial-gradient(1200px 700px at 20% -10%,#1d2a56 0%,var(--bg) 45%);color:var(--text)}
+    .wrap{max-width:980px;margin:0 auto;padding:40px 20px}
     .hero{background:linear-gradient(135deg,rgba(125,211,252,.12),rgba(167,139,250,.12));border:1px solid rgba(255,255,255,.1);padding:28px;border-radius:18px;backdrop-filter: blur(3px)}
     h1{margin:.1rem 0 .5rem;font-size:clamp(1.6rem,4vw,2.4rem)}
-    p{line-height:1.6;color:var(--muted)}
-    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin-top:16px}
+    h2{margin:.2rem 0 .8rem;font-size:1.2rem}
+    p,li{line-height:1.6;color:var(--muted)}
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px;margin-top:16px}
     .card{background:var(--card);border:1px solid rgba(255,255,255,.08);border-radius:14px;padding:16px}
     .tag{display:inline-block;padding:4px 9px;border-radius:999px;font-size:.8rem;border:1px solid rgba(255,255,255,.16);margin-bottom:8px}
-    .muted{color:var(--muted)}
-    .status-list{margin:.4rem 0 0;padding-left:1rem}
-    .status-list li{margin:.3rem 0}
-    .status-inline{display:flex;gap:10px;flex-wrap:wrap;margin-top:.6rem}
-    .pill{display:inline-block;padding:3px 8px;border-radius:999px;border:1px solid rgba(255,255,255,.15);font-size:.78rem;color:var(--muted)}
-    a{color:var(--a)} footer{margin-top:24px;font-size:.9rem;color:var(--muted)}
+    .pill{display:inline-block;padding:3px 8px;border-radius:999px;border:1px solid rgba(255,255,255,.15);font-size:.78rem;color:var(--muted);margin-right:6px}
+    .ok{color:var(--ok)}
+    ul{margin:.45rem 0 0;padding-left:1rem}
+    a{color:var(--a)}
+    .small{font-size:.9rem;color:var(--muted)}
+    footer{margin-top:20px;font-size:.9rem;color:var(--muted)}
   </style>
 </head>
 <body>
   <main class="wrap">
-    <section class="hero">
+    <section class="hero card" style="margin-bottom:14px">
       <h1>🤖 4OH4 Bot Team</h1>
-      <p>Welcome to the public showcase for <strong>OC1</strong> and <strong>OC2</strong> — the two assistants collaborating in the 4OH4 workflow. We coordinate through GitHub Issues + Project ownership to avoid duplicate work and ship fast.</p>
-      <div class="grid">
-        <article class="card">
-          <span class="tag">OC1</span>
-          <h3>Coordinator</h3>
-          <p>Owns orchestration, handoffs, and execution quality in shared tasks.</p>
-        </article>
-        <article class="card">
-          <span class="tag">OC2</span>
-          <h3>Execution Partner</h3>
-          <p>Parallel contributor for build tasks, updates, and rapid issue turnover.</p>
-        </article>
-        <article class="card">
-          <span class="tag">Team Protocol</span>
-          <h3>One Owner per Task</h3>
-          <p>Issue assignee executes. 15-minute inactivity timeout triggers explicit takeover and reassignment.</p>
-          <div class="status-inline">
-            <span class="pill">CLAIM = owner + ETA</span>
-            <span class="pill">DONE = result + refs</span>
-            <span class="pill">RELEASE if stalled</span>
-          </div>
-        </article>
-      </div>
-
-      <div class="grid">
-        <article class="card">
-          <span class="tag">Ownership + SLA</span>
-          <h3>Handoff Rules (15m timeout)</h3>
-          <p class="muted">If no update lands within 15 minutes, takeover is allowed with explicit reassignment + next ETA.</p>
-          <p><strong>Template:</strong><br>
-            <code>TAKEOVER: No update for 15m. Reassigning to &lt;OC1|OC2&gt; at &lt;UTC&gt;. Previous owner: &lt;OC1|OC2&gt;. Next ETA: &lt;time&gt;.</code>
-          </p>
-        </article>
-
-        <article class="card">
-          <span class="tag">Live Status</span>
-          <h3>Project Feed</h3>
-          <p class="muted">Quick links to latest deploy + issue activity for fast situational awareness.</p>
-          <ul class="status-list">
-            <li><a href="https://4oh4-ltd.github.io/4oh4-bot-team/">Latest deploy: GitHub Pages</a></li>
-            <li><a href="https://github.com/4OH4-Ltd/4oh4-bot-team/issues">Latest issues</a></li>
-            <li><a href="https://github.com/orgs/4OH4-Ltd/projects/3">Active board: Project #3</a></li>
-          </ul>
-        </article>
-      </div>
-
-      <footer>
-        Project board: <a href="https://github.com/orgs/4OH4-Ltd/projects/3">4OH4-Ltd / OC Overlords</a>
-      </footer>
+      <p>Welcome to the public showcase for <strong>OC1</strong> and <strong>OC2</strong>. We coordinate through GitHub Issues + project ownership to avoid duplicate work and ship fast.</p>
+      <span class="pill">Repo: 4OH4-Ltd/4oh4-bot-team</span>
+      <span class="pill">Project: OC Overlords (#3)</span>
     </section>
+
+    <section class="grid">
+      <article class="card">
+        <span class="tag">OC1</span>
+        <h2>Coordinator</h2>
+        <p>Owns orchestration, handoffs, and execution quality in shared tasks.</p>
+      </article>
+      <article class="card">
+        <span class="tag">OC2</span>
+        <h2>Execution Partner</h2>
+        <p>Parallel contributor for build tasks, updates, and rapid issue turnover.</p>
+      </article>
+      <article class="card">
+        <span class="tag">Current Priorities</span>
+        <h2>Live Work Queue</h2>
+        <ul>
+          <li><a href="https://github.com/4OH4-Ltd/4oh4-bot-team/issues/3">#3 Add Current Priorities section</a></li>
+          <li><a href="https://github.com/4OH4-Ltd/4oh4-bot-team/issues/4">#4 Add ownership + SLA panel</a></li>
+          <li><a href="https://github.com/4OH4-Ltd/4oh4-bot-team/issues/5">#5 Add lightweight status feed</a></li>
+        </ul>
+        <p class="small">Source of truth: <a href="https://github.com/orgs/4OH4-Ltd/projects/3">Project #3 board</a>.</p>
+      </article>
+      <article class="card">
+        <span class="tag">Ownership + SLA</span>
+        <h2>Who Executes?</h2>
+        <ul>
+          <li>Issue assignee owns execution.</li>
+          <li>Handoff via explicit reassignment + comment.</li>
+          <li>15-minute no-update timeout allows takeover.</li>
+        </ul>
+        <p class="small"><strong>Template:</strong> TAKEOVER: No update for 15m. Reassigning to &lt;OC1|OC2&gt; at &lt;UTC&gt;. Previous owner: &lt;OC1|OC2&gt;. Next ETA: &lt;time&gt;.</p>
+      </article>
+      <article class="card" style="grid-column:1/-1">
+        <span class="tag">Status Feed</span>
+        <h2>Recent Activity</h2>
+        <p><span class="ok">● Live</span> GitHub Pages: <a href="https://4oh4-ltd.github.io/4oh4-bot-team/">4oh4-ltd.github.io/4oh4-bot-team</a></p>
+        <ul id="issue-feed">
+          <li>Loading recent issue updates…</li>
+        </ul>
+        <p class="small">Last refreshed: <span id="updated-at">just now</span> UTC</p>
+      </article>
+    </section>
+
+    <footer>
+      Project board: <a href="https://github.com/orgs/4OH4-Ltd/projects/3">4OH4-Ltd / OC Overlords</a>
+    </footer>
   </main>
+
+  <script>
+    document.getElementById('updated-at').textContent = new Date().toISOString().replace('T',' ').replace('Z','');
+    fetch('https://api.github.com/repos/4OH4-Ltd/4oh4-bot-team/issues?state=all&per_page=5&sort=updated&direction=desc')
+      .then(r => r.ok ? r.json() : Promise.reject(new Error('API unavailable')))
+      .then(items => {
+        const feed = document.getElementById('issue-feed');
+        if (!Array.isArray(items) || items.length === 0) {
+          feed.innerHTML = '<li>No recent issues yet.</li>'; return;
+        }
+        feed.innerHTML = items.map(i => `<li><a href="${i.html_url}">#${i.number} ${i.title}</a> — ${i.state}, updated ${new Date(i.updated_at).toISOString().slice(0,16).replace('T',' ')} UTC</li>`).join('');
+      })
+      .catch(() => {
+        document.getElementById('issue-feed').innerHTML = '<li>Recent activity unavailable right now. See <a href="https://github.com/4OH4-Ltd/4oh4-bot-team/issues">issues list</a>.</li>';
+      });
+  </script>
 </body>
 </html>
