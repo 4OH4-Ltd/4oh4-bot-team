@@ -34,7 +34,7 @@
     .small{font-size:.9rem;color:var(--muted)}
     .wide{grid-column:1/-1}
     :focus-visible{outline:2px solid var(--a);outline-offset:2px}
-    @media (max-width:720px){.navlinks{display:none}}
+    @media (max-width:720px){.navlinks{display:none}.navlinks.open{display:flex;position:absolute;left:10px;right:10px;top:52px;background:var(--card);padding:10px;border-radius:10px;z-index:30}}
   </style>
 </head>
 <body>
@@ -50,6 +50,7 @@
         <a href="#faq">FAQ</a>
         <a href="#status">Status</a>
       </nav>
+      <button id="menu-toggle" class="btn" aria-label="Toggle menu">☰ Menu</button>
       <button id="theme-toggle" class="btn" aria-label="Toggle theme">🌓 Theme</button>
     </div>
   </header>
@@ -138,6 +139,43 @@
         <noscript><p class="small warn">JavaScript is disabled. Live status feed unavailable — view issues directly: <a href="https://github.com/4OH4-Ltd/4oh4-bot-team/issues">issue list</a>.</p></noscript>
       </article>
 
+
+      <article id="contrib" class="card" aria-labelledby="contrib-h">
+        <span class="tag">Contribution Guide</span>
+        <h2 id="contrib-h">How to Contribute Fast</h2>
+        <ul>
+          <li>Create or claim an issue in project #3.</li>
+          <li>Assign owner (OC1/OC2) before coding.</li>
+          <li>Post progress if >10 minutes.</li>
+          <li>Use takeover template after 15 minutes no update.</li>
+          <li>Close issue with commit reference and outcome.</li>
+        </ul>
+      </article>
+
+      <article id="branding" class="card" aria-labelledby="branding-h">
+        <span class="tag">Branding</span>
+        <h2 id="branding-h">Team Identity</h2>
+        <p><span class="pill">🛠️ OC1</span> <span class="pill">⚡ OC2</span> <span class="pill">404→Fixed</span></p>
+        <p class="small">Visual identity applied for demo; dedicated asset pack tracked in issue #18.</p>
+      </article>
+
+      <article id="release" class="card wide" aria-labelledby="release-h">
+        <span class="tag">Release Notes</span>
+        <h2 id="release-h">Latest Changes</h2>
+        <ul id="release-feed"><li>Loading release notes…</li></ul>
+      </article>
+
+      <article id="perf" class="card" aria-labelledby="perf-h">
+        <span class="tag">Performance Budget</span>
+        <h2 id="perf-h">Demo Guardrails</h2>
+        <ul>
+          <li>HTML target: < 150 KB</li>
+          <li>External requests: minimal, API-only</li>
+          <li>No blocking third-party scripts</li>
+          <li>Graceful fallback when API unavailable</li>
+        </ul>
+      </article>
+
       <article class="card wide" aria-labelledby="roadmap-h">
         <span class="tag">Roadmap</span>
         <h2 id="roadmap-h">Next 12 Upgrades</h2>
@@ -163,12 +201,18 @@
   <script>
     const data = {
       repo: '4OH4-Ltd/4oh4-bot-team',
-      apiIssues: 'https://api.github.com/repos/4OH4-Ltd/4oh4-bot-team/issues?state=all&per_page=8&sort=updated&direction=desc'
+      apiIssues: 'https://api.github.com/repos/4OH4-Ltd/4oh4-bot-team/issues?state=all&per_page=8&sort=updated&direction=desc',
+      apiReleases: 'https://api.github.com/repos/4OH4-Ltd/4oh4-bot-team/releases?per_page=3'
     };
 
     const root = document.documentElement;
     const savedTheme = localStorage.getItem('oc_theme');
     if (savedTheme) root.setAttribute('data-theme', savedTheme);
+    document.getElementById('menu-toggle').addEventListener('click', () => {
+      const nav = document.querySelector('.navlinks');
+      nav.classList.toggle('open');
+    });
+
     document.getElementById('theme-toggle').addEventListener('click', () => {
       const next = root.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
       if (next === 'dark') root.removeAttribute('data-theme'); else root.setAttribute('data-theme', 'light');
@@ -194,6 +238,21 @@
         document.getElementById('last-updated').textContent = 'Updated: n/a';
         feed.innerHTML = '<li>Live feed unavailable. Check <a href="https://github.com/4OH4-Ltd/4oh4-bot-team/issues">issues</a>.</li>';
       });
+
+    fetch(data.apiReleases)
+      .then(r => r.ok ? r.json() : Promise.reject())
+      .then(items => {
+        const rel = document.getElementById('release-feed');
+        if (!Array.isArray(items) || !items.length) {
+          rel.innerHTML = '<li>No formal releases yet — latest commits are live on main.</li>';
+          return;
+        }
+        rel.innerHTML = items.map(r => `<li><a href="${r.html_url}">${r.name || r.tag_name}</a> — ${new Date(r.published_at || r.created_at).toISOString().slice(0,10)}</li>`).join('');
+      })
+      .catch(() => {
+        document.getElementById('release-feed').innerHTML = '<li>Release API unavailable. See <a href="https://github.com/4OH4-Ltd/4oh4-bot-team/releases">releases page</a>.</li>';
+      });
+
   </script>
 </body>
 </html>
