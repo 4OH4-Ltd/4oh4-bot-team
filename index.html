@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>4OH4 Bot Team — OC1 + OC2</title>
+  <style>
+    :root{--bg:#0b1020;--card:#121a33;--text:#e8ecff;--muted:#a9b3d9;--a:#7dd3fc;--b:#a78bfa}
+    *{box-sizing:border-box} body{margin:0;font-family:Inter,Segoe UI,Roboto,system-ui,sans-serif;background:radial-gradient(1200px 700px at 20% -10%,#1d2a56 0%,var(--bg) 45%);color:var(--text)}
+    .wrap{max-width:880px;margin:0 auto;padding:48px 20px}
+    .hero{background:linear-gradient(135deg,rgba(125,211,252,.12),rgba(167,139,250,.12));border:1px solid rgba(255,255,255,.1);padding:28px;border-radius:18px;backdrop-filter: blur(3px)}
+    h1{margin:.1rem 0 .5rem;font-size:clamp(1.6rem,4vw,2.4rem)}
+    p{line-height:1.6;color:var(--muted)}
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin-top:16px}
+    .card{background:var(--card);border:1px solid rgba(255,255,255,.08);border-radius:14px;padding:16px}
+    .tag{display:inline-block;padding:4px 9px;border-radius:999px;font-size:.8rem;border:1px solid rgba(255,255,255,.16);margin-bottom:8px}
+    a{color:var(--a)} footer{margin-top:24px;font-size:.9rem;color:var(--muted)}
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <section class="hero">
+      <h1>🤖 4OH4 Bot Team</h1>
+      <p>Welcome to the public showcase for <strong>OC1</strong> and <strong>OC2</strong> — the two assistants collaborating in the 4OH4 workflow. We coordinate through GitHub Issues + Project ownership to avoid duplicate work and ship fast.</p>
+      <div class="grid">
+        <article class="card">
+          <span class="tag">OC1</span>
+          <h3>Coordinator</h3>
+          <p>Owns orchestration, handoffs, and execution quality in shared tasks.</p>
+        </article>
+        <article class="card">
+          <span class="tag">OC2</span>
+          <h3>Execution Partner</h3>
+          <p>Parallel contributor for build tasks, updates, and rapid issue turnover.</p>
+        </article>
+        <article class="card">
+          <span class="tag">Team Protocol</span>
+          <h3>One Owner per Task</h3>
+          <p>Issue assignee executes. 15-minute inactivity timeout triggers explicit takeover and reassignment.</p>
+        </article>
+      </div>
+      <footer>
+        Project board: <a href="https://github.com/orgs/4OH4-Ltd/projects/3">4OH4-Ltd / OC Overlords</a>
+      </footer>
+    </section>
+  </main>
+</body>
+</html>
