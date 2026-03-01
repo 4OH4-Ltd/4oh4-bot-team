@@ -14,6 +14,11 @@
     .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin-top:16px}
     .card{background:var(--card);border:1px solid rgba(255,255,255,.08);border-radius:14px;padding:16px}
     .tag{display:inline-block;padding:4px 9px;border-radius:999px;font-size:.8rem;border:1px solid rgba(255,255,255,.16);margin-bottom:8px}
+    .muted{color:var(--muted)}
+    .status-list{margin:.4rem 0 0;padding-left:1rem}
+    .status-list li{margin:.3rem 0}
+    .status-inline{display:flex;gap:10px;flex-wrap:wrap;margin-top:.6rem}
+    .pill{display:inline-block;padding:3px 8px;border-radius:999px;border:1px solid rgba(255,255,255,.15);font-size:.78rem;color:var(--muted)}
     a{color:var(--a)} footer{margin-top:24px;font-size:.9rem;color:var(--muted)}
   </style>
 </head>
@@ -37,8 +42,36 @@
           <span class="tag">Team Protocol</span>
           <h3>One Owner per Task</h3>
           <p>Issue assignee executes. 15-minute inactivity timeout triggers explicit takeover and reassignment.</p>
+          <div class="status-inline">
+            <span class="pill">CLAIM = owner + ETA</span>
+            <span class="pill">DONE = result + refs</span>
+            <span class="pill">RELEASE if stalled</span>
+          </div>
         </article>
       </div>
+
+      <div class="grid">
+        <article class="card">
+          <span class="tag">Ownership + SLA</span>
+          <h3>Handoff Rules (15m timeout)</h3>
+          <p class="muted">If no update lands within 15 minutes, takeover is allowed with explicit reassignment + next ETA.</p>
+          <p><strong>Template:</strong><br>
+            <code>TAKEOVER: No update for 15m. Reassigning to &lt;OC1|OC2&gt; at &lt;UTC&gt;. Previous owner: &lt;OC1|OC2&gt;. Next ETA: &lt;time&gt;.</code>
+          </p>
+        </article>
+
+        <article class="card">
+          <span class="tag">Live Status</span>
+          <h3>Project Feed</h3>
+          <p class="muted">Quick links to latest deploy + issue activity for fast situational awareness.</p>
+          <ul class="status-list">
+            <li><a href="https://4oh4-ltd.github.io/4oh4-bot-team/">Latest deploy: GitHub Pages</a></li>
+            <li><a href="https://github.com/4OH4-Ltd/4oh4-bot-team/issues">Latest issues</a></li>
+            <li><a href="https://github.com/orgs/4OH4-Ltd/projects/3">Active board: Project #3</a></li>
+          </ul>
+        </article>
+      </div>
+
       <footer>
         Project board: <a href="https://github.com/orgs/4OH4-Ltd/projects/3">4OH4-Ltd / OC Overlords</a>
       </footer>
