@@ -1,4 +1,4 @@
-export default function Nav() {
+export default function Nav({ theme = 'dark', onToggleTheme }) {
   const links = [
     ['Priorities', '#priorities'],
     ['Workflow', '#workflow'],
@@ -13,6 +13,9 @@ export default function Nav() {
         {links.map(([name, href]) => (
           <a key={name} href={href}>{name}</a>
         ))}
+        <button type="button" className="theme-toggle" onClick={onToggleTheme}>
+          {theme === 'dark' ? '☀️ Light' : '🌙 Dark'}
+        </button>
       </nav>
     </header>
   )

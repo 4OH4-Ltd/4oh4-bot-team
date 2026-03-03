@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react'
 import Card from './components/Card'
 import Nav from './components/Nav'
 import Timeline from './components/Timeline'
@@ -9,9 +10,26 @@ const priorities = [
 ]
 
 export default function App() {
+  const [theme, setTheme] = useState('dark')
+
+  useEffect(() => {
+    const savedTheme = localStorage.getItem('theme')
+    const prefersLight = window.matchMedia?.('(prefers-color-scheme: light)').matches
+    const initialTheme = savedTheme || (prefersLight ? 'light' : 'dark')
+    setTheme(initialTheme)
+    document.documentElement.dataset.theme = initialTheme
+  }, [])
+
+  const toggleTheme = () => {
+    const next = theme === 'dark' ? 'light' : 'dark'
+    setTheme(next)
+    document.documentElement.dataset.theme = next
+    localStorage.setItem('theme', next)
+  }
+
   return (
     <main className="wrap">
-      <Nav />
+      <Nav theme={theme} onToggleTheme={toggleTheme} />
       <section className="hero">
         <h1>🤖 4OH4 Bot Team</h1>
         <p>Vite + reusable components refactor for reliable links and fast iteration.</p>
