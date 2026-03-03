@@ -10,13 +10,24 @@
   font-family:Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
   letter-spacing:0.01em;
 }
+
+:root[data-theme='light']{
+  --bg:#f5f8fc;
+  --bg-elev:#ffffff;
+  --card:#ffffff;
+  --text:#102033;
+  --muted:#4a5f77;
+  --line:#d2dfef;
+  --accent:#2256d8;
+  --accent-2:#3a6ae0;
+}
 *{box-sizing:border-box}
 html,body,#root{min-height:100%}
 body{
   margin:0;
   color:var(--text);
   background:
-    linear-gradient(180deg, #06090f 0%, #05070b 100%);
+    linear-gradient(180deg, color-mix(in srgb, var(--bg) 85%, black) 0%, var(--bg) 100%);
 }
 .wrap{max-width:1080px;margin:0 auto;padding:22px}
 
@@ -36,6 +47,17 @@ body{
   transition:.2s ease;
 }
 .nav a:hover{color:var(--text);border-color:#314158;background:#0f1622}
+
+.theme-toggle{
+  color:var(--muted);
+  background:transparent;
+  border:1px solid var(--line);
+  padding:6px 10px;
+  border-radius:999px;
+  font-size:.9rem;
+  cursor:pointer;
+}
+.theme-toggle:hover{color:var(--text);border-color:#314158;background:#0f1622}
 
 a{color:var(--accent-2)}
 a:hover{color:var(--accent)}
@@ -89,11 +111,11 @@ h1,h2{font-weight:600}
 
 .timeline-wrap{grid-column:1 / -1}
 .timeline{position:relative;margin-top:10px;padding-left:14px}
-.timeline::before{content:"";position:absolute;left:6px;top:2px;bottom:2px;width:2px;background:#243041}
+.timeline::before{content:"";position:absolute;left:6px;top:2px;bottom:2px;width:2px;background:var(--line)}
 .timeline-item{position:relative;padding-left:20px;margin:0 0 14px}
 .timeline-item:last-child{margin-bottom:4px}
-.timeline-dot{position:absolute;left:0;top:4px;width:12px;height:12px;border-radius:999px;border:2px solid #314158;background:#0f141b}
-.timeline-date{font-size:.82rem;color:#7f90a6;margin:0 0 2px}
-.timeline-content h3{margin:.1rem 0 .4rem;font-size:.98rem;color:#dbe4ef}
+.timeline-dot{position:absolute;left:0;top:4px;width:12px;height:12px;border-radius:999px;border:2px solid color-mix(in srgb, var(--line) 75%, var(--text));background:var(--card)}
+.timeline-date{font-size:.82rem;color:var(--muted);margin:0 0 2px}
+.timeline-content h3{margin:.1rem 0 .4rem;font-size:.98rem;color:var(--text)}
 .timeline-content p{margin:.2rem 0}
-.timeline-links a{text-decoration:none;border-bottom:1px dotted #4c6286}
+.timeline-links a{text-decoration:none;border-bottom:1px dotted color-mix(in srgb, var(--accent) 65%, var(--line))}
