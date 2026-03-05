@@ -1,6 +1,7 @@
 import Card from './components/Card'
 import Nav from './components/Nav'
 import Timeline from './components/Timeline'
+import { runtimeMeta } from './data/runtimeMeta'
 
 const priorities = [
   { id: 6, text: 'Sticky nav + anchors' },
@@ -57,6 +58,9 @@ export default function App() {
           <Card title="Status">
             <p>Live Pages URL: <a href="https://4oh4-ltd.github.io/4oh4-bot-team/">4oh4-ltd.github.io/4oh4-bot-team</a></p>
             <p>Built with Vite + React components.</p>
+            <p><strong>Last updated (UTC):</strong> {runtimeMeta.lastUpdatedUtc}</p>
+            <p><strong>Stack:</strong> {runtimeMeta.stack.join(' · ')}</p>
+            <p><a href={runtimeMeta.repo}>Repository</a> · <a href={runtimeMeta.board}>Project #3</a></p>
           </Card>
         </div>
       </div>
